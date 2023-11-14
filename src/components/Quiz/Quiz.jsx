@@ -94,7 +94,7 @@ const Quiz = function({onLogout}){
       <div className={`mx-auto w-[40%] m-10 max-md:w-[90%] px-6`}>
         <div className={`flex space-x-6 items-center shadow-lg p-6 mb-10 max-md:flex-col max-md:space-y-6 rounded-lg`}>
           <img src={quizComplete} alt='complete' className={`h-[100px] `} />
-          <h2 className={`text-2xl uppercase text-gray-900 font-extrabold`}>
+          <h2 className={`text-2xl uppercase text-gray-900 font-extrabold text-center`}>
             Congratulations!
           </h2>
         </div>
