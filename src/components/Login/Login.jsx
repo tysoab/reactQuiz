@@ -7,6 +7,7 @@ const Login = function(props){
 
   const [userInput, setUserInput] = useState({['username']: '', ['password']: ''});
   const [isValid, setIsValid] = useState(true);
+  const [hidePassword, setHidePassword] = useState(false);
   const usernameIsVavlid = userInput.username.trim() !== '';
   const passwordIsValid = userInput.password.trim() !== '';
   const formIsValid = usernameIsVavlid && passwordIsValid;
@@ -15,6 +16,10 @@ const Login = function(props){
     if(identifier == [identifier]){
       setUserInput(preState => preState = {...userInput, [identifier]: value});
     }
+  };
+
+  const hidePasswordHandler =()=>{
+    setHidePassword(preState => !preState);
   };
 
   const submitHandler =(event)=>{
@@ -51,8 +56,10 @@ const Login = function(props){
          />
 
          <Input label='Password' isValid={isValid}
+          inputOpr ={{hidePassword, showContainer: true}}
+          onClickShow ={hidePasswordHandler}
           input={{
-            type: 'password',
+            type: `${hidePassword ? 'text' : 'password'}`,
             id: 'password',
             name: 'password',
             value: userInput.password,
