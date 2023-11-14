@@ -35,18 +35,14 @@ const Quiz = function({onLogout}){
     const formData = new FormData(event.target);
     const data = [...Object.entries(Object.fromEntries(formData))];
     
-    const countScore = data.map( answer =>{
+    const countScore = data.filter( answer =>{
       const getId = parseInt(answer[0])
-      
-      if(QUESTIONS[getId].answer === answer[1]){
-        let count = 0;
-        return count += 1;
-      }
-    }).reduce((acc, num) => acc + num, 0);
+      return QUESTIONS[getId].answer === answer[1];
+    });
 
     setUserAnswerState(preState =>{ return preState = ({...userAnswerState,
-      score: +`${countScore / QUESTIONS.length * 100}`,
-      correctAnswer: countScore,
+      score: +`${countScore.length / QUESTIONS.length * 100}`,
+      correctAnswer: countScore.length,
       attempt: data.length,
       isSubmitting: true})
       });
