@@ -22,6 +22,7 @@ function App() {
 
   const logoutHandler = ()=>{
     setIsLoggedin({loggedin: false, startQuiz: false});
+    window.location.reload();
   }
 
   return(<>

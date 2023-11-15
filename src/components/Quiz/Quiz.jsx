@@ -34,11 +34,15 @@ const Quiz = function({onLogout}){
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = [...Object.entries(Object.fromEntries(formData))];
-    
-    const countScore = data.filter( answer =>{
-      const getId = parseInt(answer[0])
-      return QUESTIONS[getId].answer === answer[1];
-    });
+    const countScore = [];
+
+    for (let i = 0; i < data.length; i++){
+     let q = QUESTIONS.filter(question =>{
+       return ((question.id === parseInt(data[i][0]) &&
+              question.answer === data[i][1] && data[i]));
+     });
+     countScore.push(...q)
+    }
 
     setUserAnswerState(preState =>{ return preState = ({...userAnswerState,
       score: +`${countScore.length / QUESTIONS.length * 100}`,

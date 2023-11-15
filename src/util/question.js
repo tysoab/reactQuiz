@@ -1,4 +1,4 @@
-export const QUESTIONS = [
+const questions = [
     {   id: 0,
         question: 'What is the internet?',
         options: {
@@ -138,4 +138,4 @@ export const QUESTIONS = [
 ];
 
 
-// export const QUESTIONS = questions.sort(() => Math.random() - 0.5);
+export const QUESTIONS = questions.sort(() => Math.random() - 0.5);
